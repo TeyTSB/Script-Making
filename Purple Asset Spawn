@@ -1,6 +1,4 @@
 
-wait(0.7)
-
 local modelAssetId = 'rbxassetid://95862743006661' 
 local TweenService = game:GetService("TweenService")
 
