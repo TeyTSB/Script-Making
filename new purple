@@ -1,0 +1,181 @@
+
+local modelAssetId = 'rbxassetid://95862743006661' 
+local TweenService = game:GetService("TweenService")
+
+local function loadModelForClient(assetId, initialOffset, finalOffset, tweenDuration, delayTime, easingStyle, easingDirection)
+    local player = game.Players.LocalPlayer
+
+    local success, model = pcall(function()
+        return game:GetObjects(assetId)[1]
+    end)
+
+    if success and model then
+        if model:IsA("Model") then
+            if not model.PrimaryPart then
+                model.PrimaryPart = model:FindFirstChild("HumanoidRootPart") or model:FindFirstChildWhichIsA("BasePart")
+            end
+
+            if model.PrimaryPart then
+                model.Parent = workspace
+                local playerCFrame = player.Character.HumanoidRootPart.CFrame
+                local initialCFrame = playerCFrame * initialOffset
+                local finalCFrame = playerCFrame * finalOffset
+
+                model:SetPrimaryPartCFrame(initialCFrame)
+
+                task.delay(delayTime, function()
+                    local tweenInfo = TweenInfo.new(
+                        tweenDuration,
+                        easingStyle or Enum.EasingStyle.Linear, 
+                        easingDirection or Enum.EasingDirection.Out 
+                    )
+                    local goal = {CFrame = finalCFrame}
+                    local tween = TweenService:Create(model.PrimaryPart, tweenInfo, goal)
+
+                    tween:Play()
+
+                    tween.Completed:Connect(function()
+                        game:GetService("Debris"):AddItem(model, 1)
+                    end)
+                end)
+            else
+                warn("The model does not have a valid PrimaryPart.")
+            end
+        else
+            warn("The loaded asset is not a model.")
+        end
+    else
+        warn("Failed to load the model. Make sure the asset ID is correct and accessible.")
+    end
+end
+
+local initialOffset = CFrame.new(10, 0, -5) 
+local finalOffset = CFrame.new(0, 0, -5) 
+local tweenDuration = 1 
+local delayTime = 1 
+local easingStyle = Enum.EasingStyle.Quad 
+local easingDirection = Enum.EasingDirection.InOut
+
+loadModelForClient(modelAssetId, initialOffset, finalOffset, tweenDuration, delayTime, easingStyle, easingDirection)
+
+
+local secondModelAssetId = 'rbxassetid://137236650010815'
+local TweenService = game:GetService("TweenService")
+
+local function loadSecondModelForClient(assetId, initialOffset, finalOffset, tweenDuration, delayTime, easingStyle, easingDirection)
+    local player = game.Players.LocalPlayer
+
+    local success, model = pcall(function()
+        return game:GetObjects(assetId)[1]
+    end)
+
+    if success and model then
+        if model:IsA("Model") then
+            if not model.PrimaryPart then
+                model.PrimaryPart = model:FindFirstChild("HumanoidRootPart") or model:FindFirstChildWhichIsA("BasePart")
+            end
+
+            if model.PrimaryPart then
+                model.Parent = workspace
+                local playerCFrame = player.Character.HumanoidRootPart.CFrame
+                local initialCFrame = playerCFrame * initialOffset
+                local finalCFrame = playerCFrame * finalOffset
+
+                model:SetPrimaryPartCFrame(initialCFrame)
+
+                task.delay(delayTime, function()
+                    local tweenInfo = TweenInfo.new(
+                        tweenDuration,
+                        easingStyle or Enum.EasingStyle.Linear, 
+                        easingDirection or Enum.EasingDirection.Out 
+                    )
+                    local goal = {CFrame = finalCFrame}
+                    local tween = TweenService:Create(model.PrimaryPart, tweenInfo, goal)
+
+                    tween:Play()
+
+                    tween.Completed:Connect(function()
+                        game:GetService("Debris"):AddItem(model, 1)
+                    end)
+                end)
+            else
+                warn("The model does not have a valid PrimaryPart.")
+            end
+        else
+            warn("The loaded asset is not a model.")
+        end
+    else
+        warn("Failed to load the model. Make sure the asset ID is correct and accessible.")
+    end
+end
+
+local initialOffset = CFrame.new(-10, 0, -5)
+local finalOffset = CFrame.new(0, 0, -5)
+local tweenDuration = 1
+local delayTime = 1
+local easingStyle = Enum.EasingStyle.Quad 
+local easingDirection = Enum.EasingDirection.InOut 
+
+loadSecondModelForClient(secondModelAssetId, initialOffset, finalOffset, tweenDuration, delayTime, easingStyle, easingDirection)
+
+
+wait(3)
+
+local thirdModelAssetId = 'rbxassetid://100901982028907'
+local TweenService = game:GetService("TweenService")
+
+local function loadThirdModelForClient(assetId, initialOffset, finalOffset, tweenDuration, delayTime, easingStyle, easingDirection)
+    local player = game.Players.LocalPlayer
+
+    local success, model = pcall(function()
+        return game:GetObjects(assetId)[1]
+    end)
+
+    if success and model then
+        if model:IsA("Model") then
+            if not model.PrimaryPart then
+                model.PrimaryPart = model:FindFirstChild("HumanoidRootPart") or model:FindFirstChildWhichIsA("BasePart")
+            end
+
+            if model.PrimaryPart then
+                model.Parent = workspace
+                local playerCFrame = player.Character.HumanoidRootPart.CFrame
+                local initialCFrame = playerCFrame * initialOffset
+                local finalCFrame = playerCFrame * finalOffset
+
+                model:SetPrimaryPartCFrame(initialCFrame)
+
+                task.delay(delayTime, function()
+                    local tweenInfo = TweenInfo.new(
+                        tweenDuration,
+                        easingStyle or Enum.EasingStyle.Linear, 
+                        easingDirection or Enum.EasingDirection.Out 
+                    )
+                    local goal = {CFrame = finalCFrame}
+                    local tween = TweenService:Create(model.PrimaryPart, tweenInfo, goal)
+
+                    tween:Play()
+
+                    tween.Completed:Connect(function()
+                        game:GetService("Debris"):AddItem(model, 1)
+                    end)
+                end)
+            else
+                warn("The model does not have a valid PrimaryPart.")
+            end
+        else
+            warn("The loaded asset is not a model.")
+        end
+    else
+        warn("Failed to load the model. Make sure the asset ID is correct and accessible.")
+    end
+end
+
+local initialOffset = CFrame.new(0, 0, -15)
+local finalOffset = CFrame.new(0, 0, -1000)
+local tweenDuration = 2
+local delayTime = 2.5
+local easingStyle = Enum.EasingStyle.Linear 
+local easingDirection = Enum.EasingDirection.In 
+
+loadThirdModelForClient(thirdModelAssetId, initialOffset, finalOffset, tweenDuration, delayTime, easingStyle, easingDirection)
